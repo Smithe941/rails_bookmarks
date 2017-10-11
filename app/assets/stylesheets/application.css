@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.style_image {
+    height: 10%;
+    width: 10%;
+}
