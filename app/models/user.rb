@@ -19,7 +19,14 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
+      user.oauth_token = auth.credentials.token
       user.image = auth.info.image # assuming the user model has an image
     end
+  end
+
+  def facebook_friends
+    graph ||= Koala::Facebook::API.new(oauth_token)
+    user = graph.get_object("me")
+    @friends = graph.get_connections(user["id"], "friends")
   end
 end
