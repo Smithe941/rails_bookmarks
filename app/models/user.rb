@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :posts, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   def self.new_with_session(params, session)
     super.tap do |user|

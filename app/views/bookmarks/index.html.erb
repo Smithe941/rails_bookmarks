@@ -2,13 +2,17 @@
 
 <h1>Bookmarks</h1>
 
+<% unless current_user %>
+  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+<% else %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% end %>
+
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Url</th>
-      <th>Description</th>
-      <th>Image</th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,14 +20,11 @@
   <tbody>
     <% @bookmarks.each do |bookmark| %>
       <tr>
-        <td><%= bookmark.title %></td>
-        <td><%= link_to bookmark.url, bookmark.url %></td>
-        <td><%= bookmark.description %></td>
+        <td><%= link_to bookmark.title, bookmark.url %></td>
         <td><%= image_tag (cloudinary_url(bookmark.url,
         :type => "url2png",
-        :crop => "fill", :width => 150, :height => 200, :gravity => :north,
+        :crop => "fill", :width => 150, :height => 150, :gravity => :north,
         :sign_url => true))%></td>
-        <td><%= link_to 'Show', bookmark %></td>
         <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
         <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
