@@ -9,6 +9,7 @@ nav.navbar.navbar-inverse
       = link_to 'Bookmarks', bookmarks_url, class: 'navbar-brand'
       ul.nav.navbar-nav.navbar-left
         li = link_to 'Friends', friends_path
+    == render 'bookmarks/search_form'
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?

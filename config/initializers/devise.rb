@@ -277,7 +277,7 @@ Devise.setup do |config|
   config.omniauth :facebook,
     ENV.fetch('APP_ID'),
     ENV.fetch('APP_SECRET'),
-    callback_url: "#{ENV.fetch('HOST_URL')}/users/auth/facebook/callback",
+    callback_url: "#{ENV.fetch('HOST_URL')}users/auth/facebook/callback",
     scope: 'email, user_friends'
 end
 

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Bookmarks</h1>
-<%= render 'search_form' %>
 <%= link_to 'New Bookmark', new_bookmark_path %>
+
 
 <table>
   <tbody>
@@ -19,7 +19,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @bookmarks %>
 <br>
 
 
