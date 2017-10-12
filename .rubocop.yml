@@ -1,0 +1,39 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'bin/setup'
+    - 'config/database.yml'
+    - 'config/secrets.yml'
+    - 'config/cloudinary.yml'
+    - 'config/initializers/devise.rb'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'db/migrate/**'
+    - 'spec/controllers/**/*'
+  Rails:
+    Enabled: true
+
+EndOfLine:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/MethodLength:
+  Exclude:
+    - 'app/datatables/**'
+    - 'spec/support/**'
+Metrics/AbcSize:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/AsciiIdentifiers:
+  Enabled: false

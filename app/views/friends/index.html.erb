@@ -1,0 +1,12 @@
+<h1>Friends</h1>
+<table>
+  <tbody>
+    <% current_user.facebook_friends.each do |friend| %>
+      <tr>
+        <td><%= friend['name'] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

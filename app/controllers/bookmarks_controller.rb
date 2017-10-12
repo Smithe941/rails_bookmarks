@@ -5,6 +5,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @bookmarks = Bookmark.all
+    @bookmarks = @bookmarks.where user_id: current_user.id
   end
 
   # GET /bookmarks/1
@@ -26,7 +27,6 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.user_id = current_user.id
-
     respond_to do |format|
       if @bookmark.save
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
@@ -60,6 +60,10 @@ class BookmarksController < ApplicationController
       format.html { redirect_to bookmarks_url, notice: 'Bookmark was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @bookmarks = Bookmark.search(params[:query])
   end
 
   private
