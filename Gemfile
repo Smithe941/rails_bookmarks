@@ -19,17 +19,18 @@ gem 'kaminari'
 gem 'koala'
 gem 'omniauth-facebook'
 gem 'pg', '~> 0.18'
-gem 'pry'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.5'
-gem 'rubocop'
 gem 'sass-rails', '~> 5.0'
 gem 'slim'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'better_errors'
   gem 'byebug', platform: :mri
+  gem 'pry'
+  gem 'rubocop'
 end
 
 group :development do

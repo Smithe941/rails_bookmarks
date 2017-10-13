@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  resources :bookmarks do
-        post 'search', on: :collection
-      end
-  resources :friends
-  root to: 'bookmarks#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  root 'home#show'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  resources :bookmarks, except: :show
+  resources :users, only: [:index, :show]
 end

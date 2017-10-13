@@ -1,25 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Bookmarks</h1>
 <%= link_to 'New Bookmark', new_bookmark_path %>
 
-
 <table>
   <tbody>
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td><%= link_to bookmark.title, bookmark.url %></td>
-        <td><%= image_tag (cloudinary_url(bookmark.url,
-        :type => "url2png",
-        :crop => "fill", :width => 150, :height => 150, :gravity => :north,
-        :sign_url => true))%></td>
-        <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if @bookmarks.empty? %>
+        No results
     <% end %>
+    <%= render @bookmarks %>
   </tbody>
 </table>
 <%= paginate @bookmarks %>
-<br>
-
-

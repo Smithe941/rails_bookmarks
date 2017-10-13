@@ -1,4 +1,4 @@
-= form_tag search_bookmarks_path, class: 'navbar-form navbar-left' do
+= form_tag bookmarks_path, method: :get, class: 'navbar-form navbar-left' do
   .input-group
     = text_field_tag :query, '', class: 'form-control', placeholder: 'Search'
     .input-group-btn

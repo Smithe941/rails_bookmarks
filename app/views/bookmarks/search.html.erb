@@ -1,9 +1,0 @@
-<h1>Search Results</h1>
-<% if @bookmarks.empty? %>
-  No results
-<% else %>
-  <% @bookmarks.each do |bookmark| %>
-    <%= bookmark.url %>
-    <br>
-  <% end %>
-<% end %>

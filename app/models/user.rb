@@ -1,19 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         :omniauth_providers => [:facebook]
+  devise :database_authenticatable, :rememberable, :omniauthable,
+         omniauth_providers: [:facebook]
 
   has_many :bookmarks, dependent: :destroy
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
-        user.email = data['email'] if user.email.blank?
-      end
-    end
-  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,8 +14,10 @@ class User < ApplicationRecord
     end
   end
 
-  def facebook_friends
-    graph ||= Koala::Facebook::API.new(oauth_token)
+  def self.facebook_friends(current_user)
+    graph = Koala::Facebook::API.new(current_user.oauth_token)
     friends = graph.get_connections('me', 'friends')
+    friends.map! { |f| f['id'] }
+    where(uid: friends)
   end
 end
