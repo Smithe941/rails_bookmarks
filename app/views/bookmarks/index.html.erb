@@ -1,12 +1,13 @@
 <h1>Bookmarks</h1>
 <%= link_to 'New Bookmark', new_bookmark_path %>
 
-<table>
-  <tbody>
-    <% if @bookmarks.empty? %>
-        No results
-    <% end %>
-    <%= render @bookmarks %>
-  </tbody>
-</table>
-<%= paginate @bookmarks %>
+<div id="bookmarks">
+  <% if @bookmarks.empty? %>
+      No results
+  <% else %>
+      <%= render @bookmarks %>
+  <% end %>
+</div>
+<div class="pagination-wrapper">
+  <%= paginate @bookmarks %>
+</div>

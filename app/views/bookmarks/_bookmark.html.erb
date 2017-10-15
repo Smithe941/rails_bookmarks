@@ -1,11 +1,9 @@
-<tr>
-  <td><%= link_to bookmark.title, bookmark.url %></td>
-  <td>
-    <%= image_tag (cloudinary_url(bookmark.url,
-      type: 'url2png', crop: 'fill',
-      width: 150, height: 150,
-      gravity: :north, sign_url: true))%>
-  </td>
-  <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-  <td><%= link_to 'Destroy', bookmark, method: :delete, 'data-confirm': 'Are you sure?' %></td>
-</tr>
+<div class="img_block"
+     style="background-image: url(<%= preview(bookmark.url) %>)"
+     onclick="location.href='<%= bookmark.url %>' ">
+  <%= link_to bookmark.title, bookmark.url, class: 'bookmark-title' %>
+  <div class="bookmark-actions">
+    <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'bookmark-edit' %>
+    <%= link_to 'Destroy', bookmark, method: :delete, 'data-confirm': 'Are you sure?', class: 'bookmark-destroy' %>
+  </div>
+</div>
