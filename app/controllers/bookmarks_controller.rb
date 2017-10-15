@@ -1,6 +1,8 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :verify_authorization
   before_action :set_bookmark, only: [:edit, :update, :destroy]
+  before_action :check_permitions, only: [:edit, :update, :destroy]
+  helper_method :can_edit?
 
   # GET /bookmarks
   def index
@@ -71,5 +73,15 @@ class BookmarksController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def bookmark_params
     params.require(:bookmark).permit(:title, :url)
+  end
+
+  def check_permitions
+    return if can_edit?(@bookmark)
+    flash[:error] = 'Access is denied'
+    redirect_to action: :index
+  end
+
+  def can_edit?(bookmark)
+    bookmark.user == current_user
   end
 end

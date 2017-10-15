@@ -9,4 +9,8 @@ module ApplicationHelper
       gravity: :north, sign_url: true
     )
   end
+
+  def alert_type(type)
+    type == 'error' ? 'danger' : 'success'
+  end
 end

@@ -2,8 +2,10 @@
      style="background-image: url(<%= preview(bookmark.url) %>)"
      onclick="location.href='<%= bookmark.url %>' ">
   <%= link_to bookmark.title, bookmark.url, class: 'bookmark-title' %>
-  <div class="bookmark-actions">
-    <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'bookmark-edit' %>
-    <%= link_to 'Destroy', bookmark, method: :delete, 'data-confirm': 'Are you sure?', class: 'bookmark-destroy' %>
-  </div>
+  <% if can_edit? bookmark %>
+      <div class="bookmark-actions">
+        <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'bookmark-edit' %>
+        <%= link_to 'Destroy', bookmark, method: :delete, 'data-confirm': 'Are you sure?', class: 'bookmark-destroy' %>
+      </div>
+  <% end %>
 </div>
