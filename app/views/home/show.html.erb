@@ -1,3 +1,6 @@
-<%= link_to user_facebook_omniauth_authorize_path do %>
-  <i class="fa fa-facebook"></i>
+<% unless current_user %>
+    <%= link_to user_facebook_omniauth_authorize_path, class: 'facebook-arrow' do %>
+        <i class="glyphicon glyphicon-arrow-up gi-large "></i>
+        <span> Sign In button here </span>
+    <% end %>
 <% end %>

@@ -59,4 +59,16 @@ body {
     width: 60%;
     margin: 0 auto;
   }
+  .gi-large{ font-size: 6em  }
+  .facebook-arrow{
+    text-decoration: none;
+    position: absolute;
+    right: 70px;
+    top: 70px;
+    i,span{
+      font-weight: bold;
+      text-align: center;
+      display: block;
+    }
+  }
 }
