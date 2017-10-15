@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "pagination";
+@import "sidebar";
+@import "sign_in_button";
+
+body{
+  overflow: hidden;
+}
 
 #bookmarks {
   width: 70%;

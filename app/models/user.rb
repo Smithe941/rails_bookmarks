@@ -14,10 +14,10 @@ class User < ApplicationRecord
     end
   end
 
-  def self.facebook_friends(current_user)
-    graph = Koala::Facebook::API.new(current_user.oauth_token)
+  def facebook_friends
+    graph = Koala::Facebook::API.new(oauth_token)
     friends = graph.get_connections('me', 'friends')
     friends.map! { |f| f['id'] }
-    where(uid: friends)
+    User.where(uid: friends)
   end
 end

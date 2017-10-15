@@ -4,7 +4,12 @@ class BookmarksController < ApplicationController
 
   # GET /bookmarks
   def index
-    @bookmarks = current_user.bookmarks.page(params[:page])
+    @bookmarks =
+      if params[:user_id].present?
+        User.find(params[:user_id]).bookmarks.page(params[:page])
+      else
+        current_user.bookmarks.page(params[:page])
+      end
     @bookmarks = @bookmarks.search(params[:query]) if params[:query].present?
   end
 
