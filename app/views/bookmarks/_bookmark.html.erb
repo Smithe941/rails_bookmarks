@@ -1,7 +1,10 @@
 <div class="img_block"
-     style="background-image: url(<%= preview(bookmark.url) %>)"
-     onclick="location.href='<%= bookmark.url %>' ">
+     style="background-image: url(<%= preview(bookmark.url) %>)">
   <%= link_to bookmark.title, bookmark.url, class: 'bookmark-title' %>
+  <div class="bookmark-link-layout"
+       onclick="location.href='<%= bookmark.url %>'"
+       style="height: <%= can_edit?(bookmark) ? '85%' : '100%'%>"
+  ></div>
   <% if can_edit? bookmark %>
       <div class="bookmark-actions">
         <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'bookmark-edit' %>

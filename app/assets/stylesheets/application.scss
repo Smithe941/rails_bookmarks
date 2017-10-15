@@ -1,57 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "main";
 @import "pagination";
 @import "sidebar";
 @import "sign_in_button";
-
-body{
-  overflow: hidden;
-}
-
-#bookmarks {
-  width: 70%;
-  margin: 0 auto;
-  .img_block {
-    &:hover .bookmark-actions a { display: block }
-    position: relative;
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 200px;
-    cursor: pointer;
-    &:hover {
-      opacity: .7;
-      box-shadow: #555 1px 1px 4px 4px;
-    }
-    a {
-      color: #FFF;
-      background-color: rgba(0, 0, 0, .8);
-      &:before{color: #FFF;}
-      &.bookmark-title{
-        position: absolute;
-        padding: 8px 3px;
-        width: 100%;
-      }
-    }
-    .bookmark-actions a {
-      display: none;
-      position: absolute;
-      bottom: 0;
-      width: 50%;
-      height: 13%;
-      text-align: center;
-      &.bookmark-destroy{ right: 0 }
-
-    }
-  }
-}
-
-
-nav.pagination{
-  text-align: center;
-}
